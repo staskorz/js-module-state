@@ -1,14 +1,20 @@
 import React, { Component } from "react"
 
+import * as inputState from "../state/input"
+
 class SecondComponent extends Component {
   constructor() {
     super()
 
     this.state = {
-      value: "",
+      value: inputState.getValue(),
     }
 
     this.onChange = this.onChange.bind(this)
+  }
+
+  componentWillUnmount() {
+    inputState.setValue(this.state.value)
   }
 
   onChange(e) {
